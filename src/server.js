@@ -27,8 +27,9 @@ app.post("/chat", async (req, res) => {
       prompt: prompt,
       max_tokens: 2048,
     });
-    res.send(completion.data.choices[0].text.trim()); 
-  } catch (error) {
+    res.send(completion.data.choices[0].text.trim());
+  } 
+  catch (error) {
     console.error("Error communicating with OpenAI API:", error);
     res.status(500).json({ error: "Internal server error" });
   }
