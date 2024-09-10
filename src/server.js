@@ -14,6 +14,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+console.log('API Key:', process.env.CHATBOT_KEY);
+
 app.post("/chat", async (req, res) => {
   const { prompt } = req.body;
 
@@ -23,10 +25,11 @@ app.post("/chat", async (req, res) => {
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "gpt-3.5-turbo",
       prompt: prompt,
       max_tokens: 2048,
     });
+    console.log("Completion:", completion.data.choices[0].text);
     res.send(completion.data.choices[0].text.trim());
   } 
   catch (error) {

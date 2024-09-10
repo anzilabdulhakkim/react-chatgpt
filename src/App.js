@@ -18,8 +18,7 @@ function App() {
     setLoading(true);
 
     // Post the input value 'prompt' to API endpoint
-    axios
-      .post("http://localhost:5555/chat", { prompt })
+    axios.post("http://localhost:5555/chat", { prompt })
       .then((res) => setResponse(res.data))
       .catch((err) => {
         console.error(err);
